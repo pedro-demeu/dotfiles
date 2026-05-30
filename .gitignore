@@ -1,0 +1,11 @@
+_local
+.*.swp
+.claude
+.DS_Store
+.svn
+.vscode
+*~
+CLAUDE.md
+AGENTS.md
+.local
+nul

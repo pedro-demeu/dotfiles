@@ -1,0 +1,39 @@
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+
+[core]
+    editor = nvim
+    autocrlf = input
+    pager = LESS= less -RS
+    excludesFile = ~/.gitignore
+
+[apply]
+    whitespace = nowarn
+
+[format]
+    pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+
+[push]
+    default = simple
+    useForceIfIncludes = true
+
+[merge "theirs"]
+    driver = true
+
+[merge "ours"]
+    driver = true
+
+[pull]
+    rebase = true
+
+[pager]
+    branch = false
+
+[init]
+    defaultBranch = main
+
+[merge]
+    conflictstyle = diff3
+

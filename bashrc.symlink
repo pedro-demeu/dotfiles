@@ -1,0 +1,28 @@
+# Abrir nvim no diretório atual (como "code .")
+alias e="nvim ."
+
+# Ir para ~/projects com autocomplete
+alias p="cd ~/projects"
+
+# Reload do bashrc
+alias reload="source ~/.bashrc"
+
+# Commit versionado
+alias version="git commit -am 'version bump'"
+
+# Ir para dotfiles
+alias dotfiles="cd $DOTFILES"
+
+# Ir para home/projects
+alias projects="cd $PROJECTS"
+
+# Limpar node_modules e reinstalar
+alias clean-install="rm -rf node_modules package-lock.json yarn.lock && npm install"
+
+# Docker compose
+alias docker-composer="docker-compose"
+
+# Git helpers
+alias commit="git add . && git commit -m"
+alias diff="git diff"
+alias wip="git add . && git commit -m 'WIP'"
