@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+    - name: Instalar pacotes básicos
+      apt:
+        name:
+          - neovim
+          - htop
+          - imagemagick
+        state: present
+        update_cache: yes
+
+    - name: Copiar aliases
+      copy:
+        src: ~/projects/dotfiles/aliases.sh
+        dest: ~/.aliases.sh
