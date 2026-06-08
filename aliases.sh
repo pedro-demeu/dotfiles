@@ -25,7 +25,24 @@ server() {
   xdg-open "http://localhost:${port}/" &
   statikk --port "$port" .
 }
-
+# VIM Aliases
 alias n="nvim"
 alias vim="nvim"
+
+# My Favorite Aliases
 alias p="cd $PROJECTS"
+
+# Git Aliases
+alias gs="git status"
+alias gc="git commit -m"
+alias log="git log --oneline --graph --decorate --color --date=short --pretty=format:'%C(yellow)%h%Creset %Cgreen%ad%Creset %Cblue%an%Creset %C(auto)%d%Creset %s'"
+alias gp="git push"
+alias fetch="git fetch"
+alias sync="git fetch && git pull && git push"
+
+# Diff rápido
+alias diff="git diff"
+alias difff="git diff --stat"
+alias diffc="git diff --cached"
+alias diffn="nvim -d"
+
