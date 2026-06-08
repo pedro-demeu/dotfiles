@@ -46,3 +46,5 @@ alias difff="git diff --stat"
 alias diffc="git diff --cached"
 alias diffn="nvim -d"
 
+alias brain='/opt/Obsidian/obsidian & sleep 2 && obsidian'
+

@@ -1,0 +1,51 @@
+---
+- name: Instalação do Obsidian no WSL2
+  hosts: localhost
+  become: yes
+  tasks:
+
+    - name: Baixar pacote Obsidian .deb
+      ansible.builtin.get_url:
+        url: https://github.com/obsidianmd/obsidian-releases/releases/download/v1.12.7/obsidian_1.12.7_amd64.deb
+        dest: /tmp/obsidian.deb
+        mode: '0644'
+
+    - name: Instalar pacote Obsidian via dpkg
+      ansible.builtin.command:
+        cmd: dpkg -i /tmp/obsidian.deb
+      register: dpkg_result
+      ignore_errors: yes
+
+    - name: Corrigir dependências faltantes
+      ansible.builtin.apt:
+        update_cache: yes
+        state: present
+        pkg:
+          - libnss3
+          - libxss1
+
+    - name: Garantir link simbólico para /usr/bin/obsidian
+      ansible.builtin.file:
+        src: /opt/Obsidian/obsidian
+        dest: /usr/bin/obsidian
+        state: link
+        force: yes
+
+    - name: Criar arquivo de aliases para Obsidian
+      ansible.builtin.copy:
+        dest: /home/dev/projects/dotfiles/aliases.sh
+        content: |
+          # Alias para abrir Obsidian
+          alias brain='/opt/Obsidian/obsidian'
+        owner: dev
+        group: dev
+        mode: '0644'
+
+    - name: Garantir que aliases.sh seja carregado no bashrc
+      ansible.builtin.lineinfile:
+        path: /home/dev/.bashrc
+        line: 'source /home/dev/projects/dotfiles/aliases.sh'
+       
+        insertafter: EOF
+        state: present
+
