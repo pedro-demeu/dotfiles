@@ -26,3 +26,6 @@ server() {
   statikk --port "$port" .
 }
 
+alias n="nvim"
+alias vim="nvim"
+alias p="cd $PROJECTS"
